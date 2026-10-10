@@ -11,7 +11,7 @@ COPY . .
 RUN npm run build
 
 # ---- serve it (unprivileged nginx on :8080) and reverse-proxy the API ----
-FROM nginxinc/nginx-unprivileged:1.27-alpine AS runtime
+FROM nginxinc/nginx-unprivileged:1.31-alpine AS runtime
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY nginx/security-headers.conf /etc/nginx/snippets/security-headers.conf
 COPY --from=build /app/dist /usr/share/nginx/html
